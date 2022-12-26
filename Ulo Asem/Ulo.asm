@@ -8,13 +8,15 @@ INCLUDE Irvine32.inc
 
 xDinding BYTE 52 DUP("X"),0																																											; Membuat dinding
 
-strSkor BYTE "Skor kamu adalah: ",0																																									; Variabel untuk menampilkan skor
+strSkor BYTE "Skor kamu      : ",0																																									; Variabel untuk menampilkan skor
 Skor BYTE 0																																															; Variabel untuk menyimpan skor
+strSkorTertinggi BYTE "Skor Tertinggi : ",0
+SkorTertinggi BYTE 0
 
 strCobaLagi BYTE "Coba Lagi?  1=Ya, 0=Tidak",0												
 SalahInput BYTE "Input Salah",0
 strKamumati BYTE "Kamu mati ",0
-strPoints BYTE " point(s)",0
+strtampilanskor BYTE " point(s)",0
 blank BYTE "                                     ",0
 
 Ulo BYTE "X", 104 DUP("x")
@@ -256,6 +258,16 @@ TampilanPapanSkor PROC																																												; prosedur to 
 	call Gotoxy
 	mov eax,"0"
 	call WriteChar																																													; PapanSkor dimulai dari nilai 0
+	mov dl,1
+	mov dh,2
+	call Gotoxy
+	mov edx,OFFSET strSkorTertinggi
+	call WriteString
+	mov dl,18
+	mov dh,2
+	call Gotoxy
+	mov al,SkorTertinggi
+	call WriteInt
 	ret
 TampilanPapanSkor ENDP
 
@@ -437,7 +449,7 @@ MemakanApel PROC
 	call BuatAcakApel
 	call TampilanApel			
 
-	mov dl,18																																														; menulis Skor
+	mov dl,18																																														; Menulis Skor
 	mov dh,1
 	call Gotoxy
 	mov al,Skor
@@ -462,15 +474,20 @@ KamuMati PROC
 	call Gotoxy
 	movzx eax, Skor
 	call WriteInt
-	mov edx, OFFSET strPoints																																										; Menampilkan Skor
+	mov edx, OFFSET strtampilanskor																																										; Menampilkan Skor
 	call WriteString
-
+	
 	mov dl,	50
 	mov dh, 18
 	call Gotoxy
 	mov edx, OFFSET strCobaLagi
 	call WriteString																																												; "Coba Lagi?"
 
+	mov al,Skor
+	cmp al,SkorTertinggi
+	jle Mencobalagi
+	mov SkorTertinggi, al
+	
 	MencobaLagi:
 	mov dh, 19
 	mov dl,	56
