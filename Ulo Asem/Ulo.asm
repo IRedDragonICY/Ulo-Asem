@@ -5,6 +5,54 @@ ExitProcess PROTO, dwExitCode: DWORD
 INCLUDE Irvine32.inc
 
 .data																																																; Tempat variabel
+; Tampilan awal
+; frame 1
+logo_a_0 DB " /$$   /$$ /$$                  /$$$$$$                                   ",0                                  
+logo_b_0 DB "| $$  | $$| $$                 /$$__  $$                                  ",0 
+logo_c_0 DB "| $$  | $$| $$  /$$$$$$       | $$  \ $$  /$$$$$$$  /$$$$$$  /$$$$$$/$$$$ ",0
+logo_d_0 DB "| $$  | $$| $$ /$$__  $$      | $$$$$$$$ /$$_____/ /$$__  $$| $$_  $$_  $$",0
+logo_e_0 DB "| $$  | $$| $$| $$  \ $$      | $$__  $$|  $$$$$$ | $$$$$$$$| $$ \ $$ \ $$",0
+logo_f_0 DB "| $$  | $$| $$| $$  | $$      | $$  | $$ \____  $$| $$_____/| $$ | $$ | $$",0
+logo_g_0 DB "|  $$$$$$/| $$|  $$$$$$/      | $$  | $$ /$$$$$$$/|  $$$$$$$| $$ | $$ | $$",0
+logo_h_0 DB "\______/ |__/ \______/        |__/  |__/|_______/  \_______/|__/ |__/ |__/",0
+
+; frame 2                                                                          
+logo_a_1 DB "$$\   $$\ $$\                  $$$$$$\                                    ",0
+logo_b_1 DB "$$ |  $$ |$$ |                $$  __$$\                                   ",0
+logo_c_1 DB "$$ |  $$ |$$ | $$$$$$\        $$ /  $$ | $$$$$$$\  $$$$$$\  $$$$$$\$$$$\  ",0
+logo_d_1 DB "$$ |  $$ |$$ |$$  __$$\       $$$$$$$$ |$$  _____|$$  __$$\ $$  _$$  _$$\ ",0
+logo_e_1 DB "$$ |  $$ |$$ |$$ /  $$ |      $$  __$$ |\$$$$$$\  $$$$$$$$ |$$ / $$ / $$ |",0
+logo_f_1 DB "$$ |  $$ |$$ |$$ |  $$ |      $$ |  $$ | \____$$\ $$   ____|$$ | $$ | $$ |",0
+logo_g_1 DB "\$$$$$$  |$$ |\$$$$$$  |      $$ |  $$ |$$$$$$$  |\$$$$$$$\ $$ | $$ | $$ |",0
+logo_h_1 DB " \______/ \__| \______/       \__|  \__|\_______/  \_______|\__| \__| \__|",0
+
+; frame 3
+logo_a_2 DB " __    __  __                   ______                                    ",0
+logo_b_2 DB "$$ |  $$ |$$ |  ______        /$$$$$$  |  _______   ______   _____  ____  ",0
+logo_c_2 DB "$$ |  $$ |$$ | /      \       $$ |__$$ | /       | /      \ /     \/    \ ",0
+logo_d_2 DB "$$ |  $$ |$$ |/$$$$$$  |      $$    $$ |/$$$$$$$/ /$$$$$$  |$$$$$$ $$$$  |",0
+logo_e_2 DB "$$ |  $$ |$$ |$$ |  $$ |      $$$$$$$$ |$$      \ $$    $$ |$$ | $$ | $$ |",0
+logo_f_2 DB "$$ \__$$ |$$ |$$ \__$$ |      $$ |  $$ | $$$$$$  |$$$$$$$$/ $$ | $$ | $$ |",0
+logo_g_2 DB "$$    $$/ $$ |$$    $$/       $$ |  $$ |/     $$/ $$       |$$ | $$ | $$ |",0
+logo_h_2 DB " $$$$$$/  $$/  $$$$$$/        $$/   $$/ $$$$$$$/   $$$$$$$/ $$/  $$/  $$/ ",0
+
+; frame 4
+logo_a_3 DB " __    __  __                   ______                                     ",0
+logo_b_3 DB "| $$  | $$| $$  ______        |  $$$$$$\  _______   ______   ______ ____   ",0
+logo_c_3 DB "| $$  | $$| $$ /      \       | $$__| $$ /       \ /      \ |      \    \  ",0
+logo_d_3 DB "| $$  | $$| $$|  $$$$$$\      | $$    $$|  $$$$$$$|  $$$$$$\| $$$$$$\$$$$\ ",0
+logo_e_3 DB "| $$  | $$| $$| $$  | $$      | $$$$$$$$ \$$    \ | $$    $$| $$ | $$ | $$ ",0
+logo_f_3 DB "| $$__/ $$| $$| $$__/ $$      | $$  | $$ _\$$$$$$\| $$$$$$$$| $$ | $$ | $$ ",0
+logo_g_3 DB " \$$    $$| $$ \$$    $$      | $$  | $$|       $$ \$$     \| $$ | $$ | $$ ",0
+logo_h_3 DB "  \$$$$$$  \$$  \$$$$$$        \$$   \$$ \$$$$$$$   \$$$$$$$ \$$  \$$  \$$ ",0
+
+
+copyright_a DB " V1.0 | Dibuat oleh Mohammad Farid Hendianto",0
+copyright_b DB " 2022 |             2200018401              ",0
+
+; Tampilan akhir
+
+
 
 xDinding BYTE 52 DUP("X"),0																																											; Membuat dinding
 
@@ -37,11 +85,871 @@ strKecepatan BYTE "Kecepatan (1-Cepat, 2-Sedang, 3-Lambat): ",0
 Kecepatan	DWORD 0
 
 .code
+
+
 Utama PROC
+TampilanAwal PROC
+	mov dl,25
+	mov dh,6
+	call Gotoxy
+	mov edx, OFFSET logo_a_0
+	mov eax, yellow
+	call SetTextColor
+	call WriteString
+
+	mov dl,25
+	mov dh,7
+	call Gotoxy
+	mov edx, OFFSET logo_b_0
+	mov eax, red
+	call SetTextColor
+	call WriteString
+	
+	mov dl,25
+	mov dh,8
+	call Gotoxy
+	mov edx, OFFSET logo_c_0
+	mov eax, yellow
+	call SetTextColor
+	call WriteString
+	
+	mov dl,25
+	mov dh,9
+	call Gotoxy
+	mov edx, OFFSET logo_e_0
+	mov eax, red
+	call SetTextColor
+	call WriteString
+	
+	mov dl,25
+	mov dh,10
+	call Gotoxy
+	mov edx, OFFSET logo_f_0
+	mov eax, yellow
+	call SetTextColor
+	call WriteString
+	
+	mov dl,25
+	mov dh,11
+	call Gotoxy
+	mov edx, OFFSET logo_g_0
+	mov eax, red
+	call SetTextColor
+	call WriteString
+	
+	mov dl,25
+	mov dh,12
+	call Gotoxy
+	mov edx, OFFSET logo_h_0
+	mov eax, yellow
+	call SetTextColor
+	call WriteString
+	
+	mov dl,37
+	mov dh,14
+	call Gotoxy
+	mov edx, OFFSET copyright_a
+	mov eax, red (red*2)
+	call SetTextColor
+	call WriteString
+	mov dl,37
+	mov dh,15
+	call Gotoxy
+	mov edx, OFFSET copyright_b
+	call WriteString
+	mov eax,250
+	call Delay
+
+	mov dl,25
+	mov dh,6
+	call Gotoxy
+	mov edx, OFFSET logo_a_1
+	mov eax, yellow
+	call SetTextColor
+	call WriteString
+
+	mov dl,25
+	mov dh,7
+	call Gotoxy
+	mov edx, OFFSET logo_b_1
+	mov eax, red
+	call SetTextColor
+	call WriteString
+	
+	mov dl,25
+	mov dh,8
+	call Gotoxy
+	mov edx, OFFSET logo_c_1
+	mov eax, yellow
+	call SetTextColor
+	call WriteString
+	
+	mov dl,25
+	mov dh,9
+	call Gotoxy
+	mov edx, OFFSET logo_e_1
+	mov eax, red
+	call SetTextColor
+	call WriteString
+	
+	mov dl,25
+	mov dh,10
+	call Gotoxy
+	mov edx, OFFSET logo_f_1
+	mov eax, yellow
+	call SetTextColor
+	call WriteString
+	
+	mov dl,25
+	mov dh,11
+	call Gotoxy
+	mov edx, OFFSET logo_g_1
+	mov eax, red
+	call SetTextColor
+	call WriteString
+	
+	mov dl,25
+	mov dh,12
+	call Gotoxy
+	mov edx, OFFSET logo_h_1
+	mov eax, yellow
+	call SetTextColor
+	call WriteString
+	
+	mov dl,37
+	mov dh,14
+	call Gotoxy
+	mov edx, OFFSET copyright_a
+	mov eax, red (red*2)
+	call SetTextColor
+	call WriteString
+	mov dl,37
+	mov dh,15
+	call Gotoxy
+	mov edx, OFFSET copyright_b
+	call WriteString
+	mov eax,250
+	call Delay
+	
+	mov dl,25
+	mov dh,6
+	call Gotoxy
+	mov edx, OFFSET logo_a_2
+	mov eax, yellow
+	call SetTextColor
+	call WriteString
+
+	mov dl,25
+	mov dh,7
+	call Gotoxy
+	mov edx, OFFSET logo_b_2
+	mov eax, red
+	call SetTextColor
+	call WriteString
+	
+	mov dl,25
+	mov dh,8
+	call Gotoxy
+	mov edx, OFFSET logo_c_2
+	mov eax, yellow
+	call SetTextColor
+	call WriteString
+	
+	mov dl,25
+	mov dh,9
+	call Gotoxy
+	mov edx, OFFSET logo_e_2
+	mov eax, red
+	call SetTextColor
+	call WriteString
+	
+	mov dl,25
+	mov dh,10
+	call Gotoxy
+	mov edx, OFFSET logo_f_2
+	mov eax, yellow
+	call SetTextColor
+	call WriteString
+	
+	mov dl,25
+	mov dh,11
+	call Gotoxy
+	mov edx, OFFSET logo_g_2
+	mov eax, red
+	call SetTextColor
+	call WriteString
+	
+	mov dl,25
+	mov dh,12
+	call Gotoxy
+	mov edx, OFFSET logo_h_2
+	mov eax, yellow
+	call SetTextColor
+	call WriteString
+	
+	mov dl,37
+	mov dh,14
+	call Gotoxy
+	mov edx, OFFSET copyright_a
+	mov eax, red (red*2)
+	call SetTextColor
+	call WriteString
+	mov dl,37
+	mov dh,15
+	call Gotoxy
+	mov edx, OFFSET copyright_b
+	call WriteString
+	mov eax,250
+	call Delay
+
+	mov dl,25
+	mov dh,6
+	call Gotoxy
+	mov edx, OFFSET logo_a_3
+	mov eax, yellow
+	call SetTextColor
+	call WriteString
+
+	mov dl,25
+	mov dh,7
+	call Gotoxy
+	mov edx, OFFSET logo_b_3
+	mov eax, red
+	call SetTextColor
+	call WriteString
+	
+	mov dl,25
+	mov dh,8
+	call Gotoxy
+	mov edx, OFFSET logo_c_3
+	mov eax, yellow
+	call SetTextColor
+	call WriteString
+	
+	mov dl,25
+	mov dh,9
+	call Gotoxy
+	mov edx, OFFSET logo_e_3
+	mov eax, red
+	call SetTextColor
+	call WriteString
+	
+	mov dl,25
+	mov dh,10
+	call Gotoxy
+	mov edx, OFFSET logo_f_3
+	mov eax, yellow
+	call SetTextColor
+	call WriteString
+	
+	mov dl,25
+	mov dh,11
+	call Gotoxy
+	mov edx, OFFSET logo_g_3
+	mov eax, red
+	call SetTextColor
+	call WriteString
+	
+	mov dl,25
+	mov dh,12
+	call Gotoxy
+	mov edx, OFFSET logo_h_3
+	mov eax, yellow
+	call SetTextColor
+	call WriteString
+	
+	mov dl,37
+	mov dh,14
+	call Gotoxy
+	mov edx, OFFSET copyright_a
+	mov eax, red (red*2)
+	call SetTextColor
+	call WriteString
+	mov dl,37
+	mov dh,15
+	call Gotoxy
+	mov edx, OFFSET copyright_b
+	call WriteString
+	mov eax,250
+	call Delay
+		mov dl,25
+	mov dh,6
+	call Gotoxy
+	mov edx, OFFSET logo_a_0
+	mov eax, yellow
+	call SetTextColor
+	call WriteString
+
+	mov dl,25
+	mov dh,7
+	call Gotoxy
+	mov edx, OFFSET logo_b_0
+	mov eax, red
+	call SetTextColor
+	call WriteString
+	
+	mov dl,25
+	mov dh,8
+	call Gotoxy
+	mov edx, OFFSET logo_c_0
+	mov eax, yellow
+	call SetTextColor
+	call WriteString
+	
+	mov dl,25
+	mov dh,9
+	call Gotoxy
+	mov edx, OFFSET logo_e_0
+	mov eax, red
+	call SetTextColor
+	call WriteString
+	
+	mov dl,25
+	mov dh,10
+	call Gotoxy
+	mov edx, OFFSET logo_f_0
+	mov eax, yellow
+	call SetTextColor
+	call WriteString
+	
+	mov dl,25
+	mov dh,11
+	call Gotoxy
+	mov edx, OFFSET logo_g_0
+	mov eax, red
+	call SetTextColor
+	call WriteString
+	
+	mov dl,25
+	mov dh,12
+	call Gotoxy
+	mov edx, OFFSET logo_h_0
+	mov eax, yellow
+	call SetTextColor
+	call WriteString
+	
+	mov dl,37
+	mov dh,14
+	call Gotoxy
+	mov edx, OFFSET copyright_a
+	mov eax, red (red*2)
+	call SetTextColor
+	call WriteString
+	mov dl,37
+	mov dh,15
+	call Gotoxy
+	mov edx, OFFSET copyright_b
+	call WriteString
+	mov eax,250
+	call Delay
+
+	mov dl,25
+	mov dh,6
+	call Gotoxy
+	mov edx, OFFSET logo_a_1
+	mov eax, yellow
+	call SetTextColor
+	call WriteString
+
+	mov dl,25
+	mov dh,7
+	call Gotoxy
+	mov edx, OFFSET logo_b_1
+	mov eax, red
+	call SetTextColor
+	call WriteString
+	
+	mov dl,25
+	mov dh,8
+	call Gotoxy
+	mov edx, OFFSET logo_c_1
+	mov eax, yellow
+	call SetTextColor
+	call WriteString
+	
+	mov dl,25
+	mov dh,9
+	call Gotoxy
+	mov edx, OFFSET logo_e_1
+	mov eax, red
+	call SetTextColor
+	call WriteString
+	
+	mov dl,25
+	mov dh,10
+	call Gotoxy
+	mov edx, OFFSET logo_f_1
+	mov eax, yellow
+	call SetTextColor
+	call WriteString
+	
+	mov dl,25
+	mov dh,11
+	call Gotoxy
+	mov edx, OFFSET logo_g_1
+	mov eax, red
+	call SetTextColor
+	call WriteString
+	
+	mov dl,25
+	mov dh,12
+	call Gotoxy
+	mov edx, OFFSET logo_h_1
+	mov eax, yellow
+	call SetTextColor
+	call WriteString
+	
+	mov dl,37
+	mov dh,14
+	call Gotoxy
+	mov edx, OFFSET copyright_a
+	mov eax, red (red*2)
+	call SetTextColor
+	call WriteString
+	mov dl,37
+	mov dh,15
+	call Gotoxy
+	mov edx, OFFSET copyright_b
+	call WriteString
+	mov eax,250
+	call Delay
+	
+	mov dl,25
+	mov dh,6
+	call Gotoxy
+	mov edx, OFFSET logo_a_2
+	mov eax, yellow
+	call SetTextColor
+	call WriteString
+
+	mov dl,25
+	mov dh,7
+	call Gotoxy
+	mov edx, OFFSET logo_b_2
+	mov eax, red
+	call SetTextColor
+	call WriteString
+	
+	mov dl,25
+	mov dh,8
+	call Gotoxy
+	mov edx, OFFSET logo_c_2
+	mov eax, yellow
+	call SetTextColor
+	call WriteString
+	
+	mov dl,25
+	mov dh,9
+	call Gotoxy
+	mov edx, OFFSET logo_e_2
+	mov eax, red
+	call SetTextColor
+	call WriteString
+	
+	mov dl,25
+	mov dh,10
+	call Gotoxy
+	mov edx, OFFSET logo_f_2
+	mov eax, yellow
+	call SetTextColor
+	call WriteString
+	
+	mov dl,25
+	mov dh,11
+	call Gotoxy
+	mov edx, OFFSET logo_g_2
+	mov eax, red
+	call SetTextColor
+	call WriteString
+	
+	mov dl,25
+	mov dh,12
+	call Gotoxy
+	mov edx, OFFSET logo_h_2
+	mov eax, yellow
+	call SetTextColor
+	call WriteString
+	
+	mov dl,37
+	mov dh,14
+	call Gotoxy
+	mov edx, OFFSET copyright_a
+	mov eax, red (red*2)
+	call SetTextColor
+	call WriteString
+	mov dl,37
+	mov dh,15
+	call Gotoxy
+	mov edx, OFFSET copyright_b
+	call WriteString
+	mov eax,250
+	call Delay
+
+	mov dl,25
+	mov dh,6
+	call Gotoxy
+	mov edx, OFFSET logo_a_3
+	mov eax, yellow
+	call SetTextColor
+	call WriteString
+
+	mov dl,25
+	mov dh,7
+	call Gotoxy
+	mov edx, OFFSET logo_b_3
+	mov eax, red
+	call SetTextColor
+	call WriteString
+	
+	mov dl,25
+	mov dh,8
+	call Gotoxy
+	mov edx, OFFSET logo_c_3
+	mov eax, yellow
+	call SetTextColor
+	call WriteString
+	
+	mov dl,25
+	mov dh,9
+	call Gotoxy
+	mov edx, OFFSET logo_e_3
+	mov eax, red
+	call SetTextColor
+	call WriteString
+	
+	mov dl,25
+	mov dh,10
+	call Gotoxy
+	mov edx, OFFSET logo_f_3
+	mov eax, yellow
+	call SetTextColor
+	call WriteString
+	
+	mov dl,25
+	mov dh,11
+	call Gotoxy
+	mov edx, OFFSET logo_g_3
+	mov eax, red
+	call SetTextColor
+	call WriteString
+	
+	mov dl,25
+	mov dh,12
+	call Gotoxy
+	mov edx, OFFSET logo_h_3
+	mov eax, yellow
+	call SetTextColor
+	call WriteString
+	
+	mov dl,37
+	mov dh,14
+	call Gotoxy
+	mov edx, OFFSET copyright_a
+	mov eax, red (red*2)
+	call SetTextColor
+	call WriteString
+	mov dl,37
+	mov dh,15
+	call Gotoxy
+	mov edx, OFFSET copyright_b
+	call WriteString
+	mov eax,250
+	call Delay
+	
+		mov dl,25
+	mov dh,6
+	call Gotoxy
+	mov edx, OFFSET logo_a_0
+	mov eax, yellow
+	call SetTextColor
+	call WriteString
+
+	mov dl,25
+	mov dh,7
+	call Gotoxy
+	mov edx, OFFSET logo_b_0
+	mov eax, red
+	call SetTextColor
+	call WriteString
+	
+	mov dl,25
+	mov dh,8
+	call Gotoxy
+	mov edx, OFFSET logo_c_0
+	mov eax, yellow
+	call SetTextColor
+	call WriteString
+	
+	mov dl,25
+	mov dh,9
+	call Gotoxy
+	mov edx, OFFSET logo_e_0
+	mov eax, red
+	call SetTextColor
+	call WriteString
+	
+	mov dl,25
+	mov dh,10
+	call Gotoxy
+	mov edx, OFFSET logo_f_0
+	mov eax, yellow
+	call SetTextColor
+	call WriteString
+	
+	mov dl,25
+	mov dh,11
+	call Gotoxy
+	mov edx, OFFSET logo_g_0
+	mov eax, red
+	call SetTextColor
+	call WriteString
+	
+	mov dl,25
+	mov dh,12
+	call Gotoxy
+	mov edx, OFFSET logo_h_0
+	mov eax, yellow
+	call SetTextColor
+	call WriteString
+	
+	mov dl,37
+	mov dh,14
+	call Gotoxy
+	mov edx, OFFSET copyright_a
+	mov eax, red (red*2)
+	call SetTextColor
+	call WriteString
+	mov dl,37
+	mov dh,15
+	call Gotoxy
+	mov edx, OFFSET copyright_b
+	call WriteString
+	mov eax,250
+	call Delay
+
+	mov dl,25
+	mov dh,6
+	call Gotoxy
+	mov edx, OFFSET logo_a_1
+	mov eax, yellow
+	call SetTextColor
+	call WriteString
+
+	mov dl,25
+	mov dh,7
+	call Gotoxy
+	mov edx, OFFSET logo_b_1
+	mov eax, red
+	call SetTextColor
+	call WriteString
+	
+	mov dl,25
+	mov dh,8
+	call Gotoxy
+	mov edx, OFFSET logo_c_1
+	mov eax, yellow
+	call SetTextColor
+	call WriteString
+	
+	mov dl,25
+	mov dh,9
+	call Gotoxy
+	mov edx, OFFSET logo_e_1
+	mov eax, red
+	call SetTextColor
+	call WriteString
+	
+	mov dl,25
+	mov dh,10
+	call Gotoxy
+	mov edx, OFFSET logo_f_1
+	mov eax, yellow
+	call SetTextColor
+	call WriteString
+	
+	mov dl,25
+	mov dh,11
+	call Gotoxy
+	mov edx, OFFSET logo_g_1
+	mov eax, red
+	call SetTextColor
+	call WriteString
+	
+	mov dl,25
+	mov dh,12
+	call Gotoxy
+	mov edx, OFFSET logo_h_1
+	mov eax, yellow
+	call SetTextColor
+	call WriteString
+	
+	mov dl,37
+	mov dh,14
+	call Gotoxy
+	mov edx, OFFSET copyright_a
+	mov eax, red (red*2)
+	call SetTextColor
+	call WriteString
+	mov dl,37
+	mov dh,15
+	call Gotoxy
+	mov edx, OFFSET copyright_b
+	call WriteString
+	mov eax,250
+	call Delay
+	
+	mov dl,25
+	mov dh,6
+	call Gotoxy
+	mov edx, OFFSET logo_a_2
+	mov eax, yellow
+	call SetTextColor
+	call WriteString
+
+	mov dl,25
+	mov dh,7
+	call Gotoxy
+	mov edx, OFFSET logo_b_2
+	mov eax, red
+	call SetTextColor
+	call WriteString
+	
+	mov dl,25
+	mov dh,8
+	call Gotoxy
+	mov edx, OFFSET logo_c_2
+	mov eax, yellow
+	call SetTextColor
+	call WriteString
+	
+	mov dl,25
+	mov dh,9
+	call Gotoxy
+	mov edx, OFFSET logo_e_2
+	mov eax, red
+	call SetTextColor
+	call WriteString
+	
+	mov dl,25
+	mov dh,10
+	call Gotoxy
+	mov edx, OFFSET logo_f_2
+	mov eax, yellow
+	call SetTextColor
+	call WriteString
+	
+	mov dl,25
+	mov dh,11
+	call Gotoxy
+	mov edx, OFFSET logo_g_2
+	mov eax, red
+	call SetTextColor
+	call WriteString
+	
+	mov dl,25
+	mov dh,12
+	call Gotoxy
+	mov edx, OFFSET logo_h_2
+	mov eax, yellow
+	call SetTextColor
+	call WriteString
+	
+	mov dl,37
+	mov dh,14
+	call Gotoxy
+	mov edx, OFFSET copyright_a
+	mov eax, red (red*2)
+	call SetTextColor
+	call WriteString
+	mov dl,37
+	mov dh,15
+	call Gotoxy
+	mov edx, OFFSET copyright_b
+	call WriteString
+	mov eax,250
+	call Delay
+
+	mov dl,25
+	mov dh,6
+	call Gotoxy
+	mov edx, OFFSET logo_a_3
+	mov eax, yellow
+	call SetTextColor
+	call WriteString
+
+	mov dl,25
+	mov dh,7
+	call Gotoxy
+	mov edx, OFFSET logo_b_3
+	mov eax, red
+	call SetTextColor
+	call WriteString
+	
+	mov dl,25
+	mov dh,8
+	call Gotoxy
+	mov edx, OFFSET logo_c_3
+	mov eax, yellow
+	call SetTextColor
+	call WriteString
+	
+	mov dl,25
+	mov dh,9
+	call Gotoxy
+	mov edx, OFFSET logo_e_3
+	mov eax, red
+	call SetTextColor
+	call WriteString
+	
+	mov dl,25
+	mov dh,10
+	call Gotoxy
+	mov edx, OFFSET logo_f_3
+	mov eax, yellow
+	call SetTextColor
+	call WriteString
+	
+	mov dl,25
+	mov dh,11
+	call Gotoxy
+	mov edx, OFFSET logo_g_3
+	mov eax, red
+	call SetTextColor
+	call WriteString
+	
+	mov dl,25
+	mov dh,12
+	call Gotoxy
+	mov edx, OFFSET logo_h_3
+	mov eax, yellow
+	call SetTextColor
+	call WriteString
+	
+	mov dl,37
+	mov dh,14
+	call Gotoxy
+	mov edx, OFFSET copyright_a
+	mov eax, red (red*2)
+	call SetTextColor
+	call WriteString
+	mov dl,37
+	mov dh,15
+	call Gotoxy
+	mov edx, OFFSET copyright_b
+	call WriteString
+	mov eax,250
+	call Delay
+	
+	mov eax, white
+	call SetTextColor
+	call clrscr
+TampilanAwal ENDP
+
+Permainan::
 	call TampilanDinding																																											; Menggambar tembok 
 	call TampilanPapanSkor																																											; Menggambar PapanSkor
 	call MemilihKecepatanUlo																																										; Berikan Pemain untuk memilih kecepatan Ulo
-
+	
 	mov esi,0
 	mov ecx,5
 TampilanUlo:
@@ -205,7 +1113,7 @@ jmp PermainanLoop																																													; perulangan lagi 
 	call InisialisasiUlangPermainan																																									; inisiasi ulang semuanya
 	
 	exitPermainan::
-	exit
+	
 INVOKE ExitProcess,0
 Utama ENDP
 
@@ -303,6 +1211,7 @@ MemilihKecepatanUlo PROC																																											; Prosedur un
 	call Gotoxy	
 	mov edx, OFFSET blank																																											; menghapus pesan error setelah delay 1.5 detik
 	call writeString
+	call TampilanPapanSkor
 	call MemilihKecepatanUlo																																										; memanggil prosedur untuk user memilih lagi
 	ret
 MemilihKecepatanUlo ENDP
@@ -507,10 +1416,10 @@ KamuMati PROC
 	call Gotoxy
 	mov edx, OFFSET blank																																											; membersihkan input sebelumnya
 	call WriteString
-	jmp MencobaLagi																																													; let user input again
+	jmp MencobaLagi																																													; biarkan user untuk input lagi
 KamuMati ENDP
 
-InisialisasiUlangPermainan PROC																																										; Prosedur untuk inisiasi ulang perUtamaan
+InisialisasiUlangPermainan PROC																																										; Prosedur untuk inisiasi ulang permainan
 	mov xPosisi[0], 45
 	mov xPosisi[1], 44
 	mov xPosisi[2], 43
@@ -526,6 +1435,6 @@ InisialisasiUlangPermainan PROC																																										; Prose
 	mov	inputChar, "+"																																												; Inisiasi ulang inputChar and TerakhirInputKarakter
 	dec yPosisiDinding[3]																																											; Mengembalikan posisi dinding
 	Call ClrScr
-	jmp Utama																																														; mengulang Permainan kembali
+	jmp Permainan																																														; mengulang Permainan kembali
 InisialisasiUlangPermainan ENDP
 END Utama

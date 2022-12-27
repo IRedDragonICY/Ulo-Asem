@@ -136,9 +136,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <MASM Include="Ulo.asm">
-      <FileType>Document</FileType>
-    </MASM>
+    <None Include="..\Debug\Ulo Asem.exe" />
+  </ItemGroup>
+  <ItemGroup>
+    <MASM Include="Ulo.asm" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
