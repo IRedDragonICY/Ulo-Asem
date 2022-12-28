@@ -3,8 +3,20 @@
 .stack 4096
 ExitProcess PROTO, dwExitCode: DWORD
 INCLUDE Irvine32.inc
+includelib Winmm.lib
+PlaySound PROTO,
+        pszSound:PTR BYTE, 
+        hmod:DWORD, 
+        fdwSound:DWORD
 
 .data																																																; Tempat variabel
+; Mengatur suara
+SuaraUloMakan BYTE "DeviceConnect",0
+SuaraUloMati BYTE "DeviceDisconnect",0
+SuaraUloLari BYTE "DeviceFail",0
+
+SND_ALIAS    DWORD 000000h
+
 ; Tampilan awal
 ; frame 1
 logo_a_0 DB " /$$   /$$ /$$                  /$$$$$$                                   ",0                                  
@@ -51,8 +63,16 @@ copyright_a DB " V1.0 | Dibuat oleh Mohammad Farid Hendianto",0
 copyright_b DB " 2022 |             2200018401              ",0
 
 ; Tampilan akhir
-
-
+; frame 1
+logo_selesai_a DB " _______  _______  _______  _______  _______ _________  _________          _______  _______  _______ ",0
+logo_selesai_b DB "(  ____ \(  ___  )(       )(  ____ )(  ___  )\__   __/  \__    _/|\     /|(       )(  ____ )(  ___  )",0
+logo_selesai_c DB "| (    \/| (   ) || () () || (    )|| (   ) |   ) (        )  (  | )   ( || () () || (    )|| (   ) |",0
+logo_selesai_d DB "| (_____ | (___) || || || || (____)|| (___) |   | |        |  |  | |   | || || || || (____)|| (___) |",0
+logo_selesai_e DB "(_____  )|  ___  || |(_)| ||  _____)|  ___  |   | |        |  |  | |   | || |(_)| ||  _____)|  ___  |",0
+logo_selesai_f DB "      ) || (   ) || |   | || (      | (   ) |   | |        |  |  | |   | || |   | || (      | (   ) |",0 
+logo_selesai_g DB "/\____) || )   ( || )   ( || )      | )   ( |___) (___  |\_)  )  | (___) || )   ( || )      | )   ( |",0
+logo_selesai_h DB "\_______)|/     \||/     \||/       |/     \|\_______/  (____/   (_______)|/     \||/       |/     \|",0                                        
+                                                                                                   
 
 xDinding BYTE 52 DUP("X"),0																																											; Membuat dinding
 
@@ -85,10 +105,8 @@ strKecepatan BYTE "Kecepatan (1-Cepat, 2-Sedang, 3-Lambat): ",0
 Kecepatan	DWORD 0
 
 .code
-
-
 Utama PROC
-TampilanAwal PROC
+TampilanAwal PROC																																													; Tampilan start awal (logo) sebelum permainan dimulai
 	mov dl,25
 	mov dh,6
 	call Gotoxy
@@ -956,7 +974,6 @@ TampilanUlo:
 	call TampilanPemain																																												; Menggambar  Ulo (Memulai dengan panjang 5 )
 	inc esi
 loop TampilanUlo
-
 	call Randomize																																													; mengacak dengan library irvine32.
 	call BuatAcakApel
 	call TampilanApel																																												; Menampilkan selesai
@@ -976,7 +993,7 @@ loop TampilanUlo
 
 		noKey:
 		cmp inputChar,"x"	
-		je exitPermainan																																											; Keluar Permainan jika user input keyboard x
+		je KeluarPermaian																																											; Keluar Permainan jika user input keyboard x
 
 		cmp inputChar,"w"
 		je CekAtas
@@ -1112,8 +1129,74 @@ jmp PermainanLoop																																													; perulangan lagi 
 	BermainLagi::			
 	call InisialisasiUlangPermainan																																									; inisiasi ulang semuanya
 	
-	exitPermainan::
+	KeluarPermaian::
+	call clrscr
+	mov dl,10
+	mov dh,10
+	call Gotoxy
+	mov edx, OFFSET logo_selesai_a
+	mov eax, yellow
+	call SetTextColor
+	call WriteString
 	
+	mov dl,10
+	mov dh,11
+	call Gotoxy
+	mov edx, OFFSET logo_selesai_b
+	mov eax, green
+	call SetTextColor
+	call WriteString
+
+	mov dl,10
+	mov dh,12
+	call Gotoxy
+	mov edx, OFFSET logo_selesai_c
+	mov eax, yellow
+	call SetTextColor
+	call WriteString
+	
+	mov dl,10
+	mov dh,13
+	call Gotoxy
+	mov edx, OFFSET logo_selesai_d
+	mov eax, green
+	call SetTextColor
+	call WriteString
+
+	mov dl,10
+	mov dh,14
+	call Gotoxy
+	mov edx, OFFSET logo_selesai_e
+	mov eax, yellow
+	call SetTextColor
+	call WriteString
+	
+	mov dl,10
+	mov dh,15
+	call Gotoxy
+	mov edx, OFFSET logo_selesai_f
+	mov eax, green
+	call SetTextColor
+	call WriteString
+	
+	mov dl,10
+	mov dh,16
+	call Gotoxy
+	mov edx, OFFSET logo_selesai_g
+	mov eax, yellow
+	call SetTextColor
+	call WriteString
+
+	mov dl,10
+	mov dh,17
+	call Gotoxy
+	mov edx, OFFSET logo_selesai_h
+	mov eax, green
+	call SetTextColor
+	call WriteString
+	
+	mov eax, white
+	call SetTextColor
 INVOKE ExitProcess,0
 Utama ENDP
 
@@ -1129,12 +1212,13 @@ TampilanDinding PROC																																												; Prosedur untuk
 	mov dh,yPosisiDinding[1]
 	call Gotoxy	
 	mov edx,OFFSET xDinding		
-	call WriteString																																												; Tampilan Dinding Bawah
+	call WriteString																																												; Tampilan Dinding kanan
 
 	mov dl, xPosisiDinding[2]
 	mov dh, yPosisiDinding[2]
-	mov eax,"#"	
+	mov eax,"X"	
 	inc yPosisiDinding[3]
+
 	L11: 
 	call Gotoxy	
 	call WriteChar	
@@ -1160,6 +1244,7 @@ TampilanPapanSkor PROC																																												; prosedur to 
 	mov dh,1
 	call Gotoxy
 	mov edx,OFFSET strSkor																																											; mencetak kalimat indikator Skor
+	
 	call WriteString
 	mov dl,19
 	mov dh,1
@@ -1320,7 +1405,7 @@ Tampilantubuh ENDP
 
 MemakanApel PROC
 	; Ulo sedang memakan apel
-
+	INVOKE PlaySound, OFFSET SuaraUloMakan, NULL, SND_ALIAS
 	inc Skor
 	mov ebx,4
 	add bl, Skor
@@ -1368,6 +1453,7 @@ MemakanApel ENDP
 
 
 KamuMati PROC
+	INVOKE PlaySound, OFFSET SuaraUloMati, NULL, SND_ALIAS
 	mov eax, 1000
 	call delay
 	Call ClrScr	
@@ -1399,13 +1485,13 @@ KamuMati PROC
 	
 	MencobaLagi:
 	mov dh, 19
-	mov dl,	56
+	mov dl,	54
 	call Gotoxy
 	call ReadInt																																													; mendapatkan input user
 	cmp al, 1
 	je BermainLagi																																													; Bermain Lagi
 	cmp al, 0
-	je exitPermainan																																												; keluar dari Permainan
+	je KeluarPermaian																																												; keluar dari Permainan
 
 	mov dh,	17
 	call Gotoxy
