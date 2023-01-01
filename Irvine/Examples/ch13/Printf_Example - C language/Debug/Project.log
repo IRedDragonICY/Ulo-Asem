@@ -1,0 +1,3 @@
+﻿  Assembling asmMain.asm...
+asmMain.asm(13): error A2008: syntax error : in directive
+C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\VC\VCTargets\BuildCustomizations\masm.targets(50,5): error MSB3721: The command "ml.exe /c /nologo /Zi /Fo"Debug\asmMain.obj" /I "c:\Irvine" /W3 /errorReport:prompt  /TaasmMain.asm" exited with code 1.
