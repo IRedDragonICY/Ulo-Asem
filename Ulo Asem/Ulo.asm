@@ -74,6 +74,21 @@ logo_selesai_g DB "/\____) || )   ( || )   ( || )      | )   ( |___) (___  |\_) 
 logo_selesai_h DB "\_______)|/     \||/     \||/       |/     \|\_______/  (____/   (_______)|/     \||/       |/     \|",0                                        
                                                                                                    
 
+; Tampilan Mati
+
+tengkorak_1 DB "   _                   _",0
+tengkorak_2 DB "(_, |      __ __      | ,_)",0
+tengkorak_3 DB "   \\    /  ^  \    /'/",0
+tengkorak_4 DB "    '\'\,/\      \,/'/'",0
+tengkorak_5 DB "      '\| []   [] |/'",0
+tengkorak_6 DB "        (_  /^\  _)",0
+tengkorak_7 DB "          \  ~  /",0
+tengkorak_8 DB "          /HHHHH\",0
+tengkorak_9 DB "        /'/{^^^}\'\",0
+tengkorak_10 DB "    _,/'/'  ^^^  '\'\,_",0
+tengkorak_11 DB "   (_, |           | ,_)",0
+tengkorak_12 DB "     (_)           (_)",0
+
 xDinding BYTE 52 DUP("X"),0																																											; Membuat dinding
 
 strSkor BYTE "Skor kamu      : ",0																																									; Variabel untuk menampilkan skor
@@ -83,7 +98,7 @@ SkorTertinggi BYTE 0
 
 strCobaLagi BYTE "Coba Lagi?  1=Ya, 0=Tidak",0												
 SalahInput BYTE "Input Salah",0
-strKamumati BYTE "Kamu mati ",0
+strKamumati BYTE "KAMU MATI ",0
 strtampilanskor BYTE " point(s)",0
 blank BYTE "                                     ",0
 
@@ -983,7 +998,7 @@ loop TampilanUlo
 		mov dh,1
 		call Gotoxy
 
-		; get user key input
+		; mendapatkan input key dari pemain
 		call ReadKey
         jz noKey																																													; akan loncat jika tidak ada keyboard yang dimasukkan oleh user
 		processInput:
@@ -1125,7 +1140,7 @@ jmp PermainanLoop																																													; perulangan lagi 
 
 	Mati::
 	call KamuMati
-	 
+	
 	BermainLagi::			
 	call InisialisasiUlangPermainan																																									; inisiasi ulang semuanya
 	
@@ -1195,6 +1210,8 @@ jmp PermainanLoop																																													; perulangan lagi 
 	call SetTextColor
 	call WriteString
 	
+	mov eax,3000
+	call Delay
 	mov eax, white
 	call SetTextColor
 INVOKE ExitProcess,0
@@ -1206,7 +1223,11 @@ TampilanDinding PROC																																												; Prosedur untuk
 	mov dh,yPosisiDinding[0]
 	call Gotoxy	
 	mov edx,OFFSET xDinding
-	call WriteString																																												; Tampilan dinding atas 
+	mov eax, brown
+	call SetTextColor																																												; Memberikan warna pada dinding
+	call WriteString																																												
+	
+	; Tampilan dinding atas 
 
 	mov dl,xPosisiDinding[1]
 	mov dh,yPosisiDinding[1]
@@ -1220,32 +1241,36 @@ TampilanDinding PROC																																												; Prosedur untuk
 	inc yPosisiDinding[3]
 
 	L11: 
-	call Gotoxy	
+	call Gotoxy
 	call WriteChar	
 	inc dh
-	cmp dh, yPosisiDinding[3]																																										; Tampilan Dinding kanan
+	cmp dh, yPosisiDinding[3]																																										; Tampilan Dinding Kiri
 	jl L11
 
 	mov dl, xPosisiDinding[0]
 	mov dh, yPosisiDinding[0]
-	mov eax,"#"	
+	mov eax,"X"	
 	L12: 
-	call Gotoxy	
+	call Gotoxy
+
 	call WriteChar	
 	inc dh
 	cmp dh, yPosisiDinding[3]																																										; Tampilan dinding kiri
 	jl L12
 	ret
-TampilanDinding ENDP
 
+TampilanDinding ENDP
 
 TampilanPapanSkor PROC																																												; prosedur to Tampilan PapanSkor
 	mov dl,1
 	mov dh,1
 	call Gotoxy
 	mov edx,OFFSET strSkor																																											; mencetak kalimat indikator Skor
-	
+	mov eax,yellow
+	call SetTextColor
 	call WriteString
+	mov eax,white
+	call SetTextColor
 	mov dl,19
 	mov dh,1
 	call Gotoxy
@@ -1255,7 +1280,11 @@ TampilanPapanSkor PROC																																												; prosedur to 
 	mov dh,2
 	call Gotoxy
 	mov edx,OFFSET strSkorTertinggi
+	mov eax,yellow
+	call SetTextColor
 	call WriteString
+	mov eax, red
+	call SetTextColor
 	mov dl,18
 	mov dh,2
 	call Gotoxy
@@ -1271,7 +1300,11 @@ MemilihKecepatanUlo PROC																																											; Prosedur un
 	mov dh,1
 	call Gotoxy	
 	mov edx,OFFSET strKecepatan																																										; promt untuk memasukkan integer (1,2,3)
+	mov eax,lightGreen
+	call SetTextColor
 	call WriteString
+	mov eax,white
+	call SetTextColor
 	mov esi, 40																																														; perbedaan milisecond setiap level Kecepatan
 	mov eax,0
 	call readInt			
@@ -1306,7 +1339,7 @@ TampilanPemain PROC																																													; Tampilan Pemai
 	mov dh,yPosisi[esi]
 	call Gotoxy
 	mov dl, al																																														; menyimpan sementara register al pada dl
-	mov al, Ulo[esi]		
+	mov al, Ulo[esi]
 	call WriteChar
 	mov al, dl			
 	ret
@@ -1396,7 +1429,7 @@ Tampilantubuh PROC																																													; Prosedur untuk 
 		mov yPosisi[esi], ah
 		mov xPosisi[esi], al																																										; Menetapkan posisi baru ke unit
 		mov al, dl
-		mov ah,dh																																													; Pindah the  posisi back into al dan ah
+		mov ah, dh																																													; Pindah the  posisi back into al dan ah
 		call TampilanPemain
 		cmp esi, ecx
 		jl CetakTubuhPerulangan
@@ -1458,35 +1491,144 @@ KamuMati PROC
 	call delay
 	Call ClrScr	
 	
-	mov dl,	57
-	mov dh, 12
+	mov dl,48
+	mov dh,1
 	call Gotoxy
+	mov eax,lightred
+	call SetTextColor
+	mov edx, OFFSET tengkorak_1
+	call WriteString
+	
+	mov dl,48
+	mov dh,2
+	call Gotoxy
+	mov eax,red
+	call SetTextColor
+	mov edx, OFFSET tengkorak_2
+	call WriteString
+	
+	mov dl,48
+	mov dh,3
+	call Gotoxy
+	mov eax,lightred
+	call SetTextColor
+	mov edx, OFFSET tengkorak_3
+	call WriteString
+
+	mov dl,48
+	mov dh,4
+	call Gotoxy
+	mov eax,red
+	call SetTextColor
+	mov edx, OFFSET tengkorak_4
+	call WriteString
+
+	mov dl,48
+	mov dh,5
+	call Gotoxy
+	mov eax,red
+	call SetTextColor
+	mov edx, OFFSET tengkorak_5
+	call WriteString
+
+	mov dl,48
+	mov dh,6
+	call Gotoxy
+	mov eax,lightred
+	call SetTextColor
+	mov edx, OFFSET tengkorak_6
+	call WriteString
+
+	mov dl,48
+	mov dh,7
+	call Gotoxy
+	mov eax,red
+	call SetTextColor
+	mov edx, OFFSET tengkorak_7
+	call WriteString
+
+	mov dl,48
+	mov dh,8
+	call Gotoxy
+	mov eax,lightred
+	call SetTextColor
+	mov edx, OFFSET tengkorak_8
+	call WriteString
+
+	mov dl,48
+	mov dh,9
+	call Gotoxy
+	mov eax,red
+	call SetTextColor
+	mov edx, OFFSET tengkorak_9
+	call WriteString
+
+	mov dl,48
+	mov dh,10
+	call Gotoxy
+	mov eax,lightred
+	call SetTextColor
+	mov edx, OFFSET tengkorak_10
+	call WriteString
+
+	mov dl,48
+	mov dh,11
+	call Gotoxy
+	mov eax,red
+	call SetTextColor
+	mov edx, OFFSET tengkorak_11
+	call WriteString
+
+	mov dl,48
+	mov dh,12
+	call Gotoxy
+	mov eax,lightred
+	call SetTextColor
+	mov edx, OFFSET tengkorak_12
+	call WriteString
+
+
+	mov dl,	57
+	mov dh, 13
+	call Gotoxy
+	mov eax, red
+	call SetTextColor
 	mov edx, OFFSET strKamumati																																										; "Kamu Mati"
 	call WriteString
 
 	mov dl,	56
-	mov dh, 14
+	mov dh, 15
 	call Gotoxy
+	mov eax, brown
+	call SetTextColor
 	movzx eax, Skor
 	call WriteInt
+	mov eax, yellow
+	call SetTextColor
 	mov edx, OFFSET strtampilanskor																																										; Menampilkan Skor
 	call WriteString
 	
 	mov dl,	50
-	mov dh, 18
+	mov dh, 19
 	call Gotoxy
+	mov eax, lightgreen
+	call SetTextColor
 	mov edx, OFFSET strCobaLagi
 	call WriteString																																												; "Coba Lagi?"
 
+	mov eax, white
+	call SetTextColor
 	mov al,Skor
 	cmp al,SkorTertinggi
 	jle Mencobalagi
 	mov SkorTertinggi, al
 	
 	MencobaLagi:
-	mov dh, 19
 	mov dl,	54
+	mov dh, 20
 	call Gotoxy
+	mov eax, white
+	call SetTextColor
 	call ReadInt																																													; mendapatkan input user
 	cmp al, 1
 	je BermainLagi																																													; Bermain Lagi
