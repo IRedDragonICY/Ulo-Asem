@@ -1,0 +1,2 @@
+﻿main.obj : error LNK2019: unresolved external symbol _asmMain referenced in function _main
+D:\Dropbox\Asm book 8\examples\ch13\C_Language_Project\Debug\C_Language_Project.exe : fatal error LNK1120: 1 unresolved externals
