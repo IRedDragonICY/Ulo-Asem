@@ -29,13 +29,14 @@ Sistem Operasi	:	Windows XP 32 bit atau yangne lebih tinggi
 # Langkah Instalasi
 
 Berikut adalah langkah-langkah untuk menjalankan aplikasi game Ulo Asem:
-1)	Download file aplikasi Ulo Asem yang telah tersedia di website github https://github.com/IRedDragonICY/Ulo-Asem
-2)	Pastikan bahwa komputer Anda sudah memenuhi spesifikasi yang dibutuhkan, seperti sistem operasi Windows XP 32 bit atau yang lebih tinggi, prosesor 512 Mhz atau lebih tinggi, memory 64 MB atau lebih tinggi, storage 3 MB ruang hardisk yang tersedia, sound card yang terdapat pada komputer, dan graphic card yang mendukung penampilan warna.
+1)	Download file aplikasi game [Ulo Asem](https://github.com/IRedDragonICY/Ulo-Asem/releases/download/v1.0/Ulo.Asem.v1.0.exe)
+2)	Pastikan bahwa komputer Anda sudah memenuhi spesifikasi yang dibutuhkan, seperti sistem operasi Windows XP 32 bit atau yang lebih tinggi, prosesor 512 Mhz atau lebih tinggi, memory 64 MB atau lebih tinggi, storage 1 MB ruang hardisk yang tersedia, sound card yang terdapat pada komputer, dan graphic card yang mendukung penampilan warna.
 3)	Buka file aplikasi Ulo Asem yang telah didownload.
 4)	Ikuti instruksi yang ada pada layar untuk menjalankan aplikasi game Ulo Asem.
 5)	Selamat bermain!
 
 
-# Mekanik Permainan
+# Credit
+[Library Irvine32](https://github.com/Eazybright/Irvine32), KIP R. IRVINE Florida International University School of Computing and Information Sciences.
 
-
+Dosen Dasar Sistem Komputer, [Pak Ali Tarmuji](https://github.com/alitarmuji).
