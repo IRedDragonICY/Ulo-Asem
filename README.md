@@ -39,4 +39,4 @@ Berikut adalah langkah-langkah untuk menjalankan aplikasi game Ulo Asem:
 # Credit
 [Library Irvine32](https://github.com/Eazybright/Irvine32), KIP R. IRVINE Florida International University School of Computing and Information Sciences.
 
-Dosen Dasar Sistem Komputer, [Pak Ali Tarmuji](https://github.com/alitarmuji).
+[Ali Tarmuji, S.T., M.Cs. Teknik Informatika](https://github.com/alitarmuji), Dosen Dasar Sistem Komputer .
