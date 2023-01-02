@@ -11,3 +11,18 @@ Aplikasi game Ulo Asem ini diberi nama dengan mengambil inspirasi dari bahasa Ja
 Dalam aplikasi game Ulo Asem ini, pengguna dapat memainkan game tersebut dengan menggunakan tombol panah pada keyboard untuk mengatur arah gerakan ular. Ular tersebut akan bergerak mengikuti arah yang ditunjukkan oleh pengguna, dan akan terus bergerak hingga menabrak tembok atau tubuh sendiri. Selain itu, setiap kali ular berhasil memakan sebuah apel, maka skor akan bertambah dan panjang ular akan bertambah.
 
 Saat game berakhir, aplikasi game Ulo Asem akan menampilkan skor akhir yang telah diraih oleh pengguna. Skor tersebut akan ditampilkan sesuai dengan jumlah apel yang telah dimakan oleh ular. Selain itu, aplikasi game ini juga menyediakan fitur reset yang dapat digunakan oleh pengguna untuk mengulang permainan dari awal.
+
+# Spesifikasi Sistem
+
+Untuk dapat menjalankan aplikasi game Ulo Asem, diperlukan spesifikasi sistem yang minimal sebagai berikut:
+Sistem Operasi	:	Windows XP 32 bit atau yangne lebih tinggi
+
+| Spesifikasi   | Second Header |
+| ------------- | ------------- |
+| Sistem Operasi | Windows XP 32 bit atau yangne lebih tinggi |
+| Prosessor | 512 Mhz atai lebih tinggi  |
+| Memori  | 32 MB atau lebih tinggi  |
+| Penyimpanan | 1 MB ruang hardisk yang tersedia |
+| Sound Card | Terdapat soundcard untuk menjalankan audio |
+| GPU | Kartu grafis yang mendukung penampilan warna |
+
