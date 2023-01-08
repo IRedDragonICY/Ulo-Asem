@@ -41,6 +41,11 @@ Berikut adalah langkah-langkah untuk menjalankan aplikasi game Ulo Asem:
   <img src="https://github.com/IRedDragonICY/Ulo-Asem/blob/master/Documentation/Tampilan_Awal.gif?raw=true" width="900" alt="Awal memasuki permainan">
 </p>
 
+Tampilan awal memasuki aplikasi game Ulo Asem
+
+<p align="center">
+  <img src="https://github.com/IRedDragonICY/Ulo-Asem/blob/master/Documentation/Tampilan_Permainan.gif?raw=true" width="900" alt="Awal memasuki permainan">
+</p>
 
 # Credit
 [Library Irvine32](https://github.com/Eazybright/Irvine32), KIP R. IRVINE Florida International University School of Computing and Information Sciences.
