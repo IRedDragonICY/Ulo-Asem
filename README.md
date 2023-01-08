@@ -4,7 +4,7 @@
   <img src="https://raw.githubusercontent.com/IRedDragonICY/Ulo-Asem/master/Ulo%20Icon.png" width="300" alt="accessibility text">
 </p>
 
-Ulo Asem adalah sebuah aplikasi game sederhana yang dibuat menggunakan bahasa pemrograman Assembly yaitu MASM. Aplikasi ini ditujukan untuk membantu para pemula dalam mempelajari bahasa Assembly dengan cara yang menyenangkan.
+Ulo Asem adalah sebuah aplikasi game snake sederhana yang dibuat menggunakan bahasa pemrograman Assembly yaitu MASM. Aplikasi ini ditujukan untuk membantu para pemula dalam mempelajari bahasa Assembly dengan cara yang menyenangkan.
 
 Aplikasi game Ulo Asem ini diberi nama dengan mengambil inspirasi dari bahasa Jawa yang merupakan salah satu bahasa daerah di Indonesia. Kata 'ulo' dalam bahasa Jawa merupakan salah satu sinonim untuk kata 'ular', sedangkan 'asem' merupakan kepanjangan dari bahasa Assembly yang merupakan bahasa pemrograman yang digunakan dalam pembuatan aplikasi ini. Sehingga, penamaan aplikasi game Ulo Asem ini merupakan gabungan dari kata 'ular' dan 'Assembly', yang diharapkan dapat menjadi salah satu sarana belajar bahasa Assembly yang menyenangkan bagi para pemula.
 
