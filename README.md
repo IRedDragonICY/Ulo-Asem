@@ -52,9 +52,12 @@ Tampilan saat gameover
   <img src="https://github.com/IRedDragonICY/Ulo-Asem/blob/master/Documentation/Tampilan_GameOver.gif?raw=true" width="900" alt="Game Over">
 </p>
 
-
+Tampilan aplikasi saat ditutup
+<p align="center">
+  <img src="https://github.com/IRedDragonICY/Ulo-Asem/blob/master/Documentation/Tampilan_Penutup.gif?raw=true" width="900" alt="Game Over">
+</p>
 
 # Credit
 [Library Irvine32](https://github.com/Eazybright/Irvine32), KIP R. IRVINE Florida International University School of Computing and Information Sciences.
 
-[Ali Tarmuji, S.T., M.Cs. Teknik Informatika](https://github.com/alitarmuji), Dosen Dasar Sistem Komputer .
+[Ali Tarmuji, S.T., M.Cs. Teknik Informatika](https://github.com/alitarmuji), selaku dosen Dasar Sistem Komputer .
