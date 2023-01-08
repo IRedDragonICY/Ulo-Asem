@@ -57,6 +57,10 @@ Tampilan aplikasi saat ditutup
   <img src="https://github.com/IRedDragonICY/Ulo-Asem/blob/master/Documentation/Tampilan_Penutup.gif?raw=true" width="900" alt="Game Over">
 </p>
 
+# Penjelasan Program
+
+https://youtu.be/HXT8ZYYlVNg
+
 # Credit
 [Library Irvine32](https://github.com/Eazybright/Irvine32), KIP R. IRVINE Florida International University School of Computing and Information Sciences.
 
