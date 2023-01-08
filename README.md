@@ -44,8 +44,14 @@ Tampilan awal memasuki aplikasi game Ulo Asem
 
 Tampilan di dalam permainan 
 <p align="center">
-  <img src="https://github.com/IRedDragonICY/Ulo-Asem/blob/master/Documentation/Tampilan_Permainan.gif?raw=true" width="900" alt="Awal memasuki permainan">
+  <img src="https://github.com/IRedDragonICY/Ulo-Asem/blob/master/Documentation/Tampilan_Permainan.gif?raw=true" width="900" alt="Tampilan Permainan">
 </p>
+
+Tampilan saat gameover
+<p align="center">
+  <img src="https://github.com/IRedDragonICY/Ulo-Asem/blob/master/Documentation/Tampilan_GameOver.gif?raw=true" width="900" alt="Game Over">
+</p>
+
 
 
 # Credit
