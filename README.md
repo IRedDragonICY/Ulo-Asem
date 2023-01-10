@@ -1,5 +1,6 @@
 # Ulo Asem
-
+![Versi](https://img.shields.io/badge/Version-1.0-green)
+![Github All Releases](https://img.shields.io/github/downloads/IRedDragonICY/Ulo-Asem/total.svg)
 <p align="center">
   <img src="https://raw.githubusercontent.com/IRedDragonICY/Ulo-Asem/master/Ulo%20Icon.png" width="300" alt="accessibility text">
 </p>
