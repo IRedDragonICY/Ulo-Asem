@@ -16,7 +16,6 @@ Saat game berakhir, aplikasi game Ulo Asem akan menampilkan skor akhir yang tela
 # Spesifikasi Sistem
 
 Untuk dapat menjalankan aplikasi game Ulo Asem, diperlukan spesifikasi sistem yang minimal sebagai berikut:
-Sistem Operasi	:	Windows XP 32 bit atau yangne lebih tinggi
 
 | Spesifikasi   | Second Header |
 | ------------- | ------------- |
