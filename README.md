@@ -19,8 +19,8 @@ Untuk dapat menjalankan aplikasi game Ulo Asem, diperlukan spesifikasi sistem ya
 
 | Spesifikasi   | Second Header |
 | ------------- | ------------- |
-| Sistem Operasi | Windows XP 32 bit atau yangne lebih tinggi |
-| Prosessor | 512 Mhz atai lebih tinggi  |
+| Sistem Operasi | Windows XP 32 bit atau yang lebih tinggi |
+| Prosessor | 512 Mhz atau lebih tinggi  |
 | Memori  | 32 MB atau lebih tinggi  |
 | Penyimpanan | 1 MB ruang hardisk yang tersedia |
 | Sound Card | Terdapat soundcard untuk menjalankan audio |
