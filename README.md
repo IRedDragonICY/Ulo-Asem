@@ -58,6 +58,8 @@ Tampilan aplikasi saat ditutup
 </p>
 
 # Penjelasan Program
+Klik gambar di bawah ini untuk menuju ke youtube
+
 [<img src="https://img.youtube.com/vi/HXT8ZYYlVNg/maxresdefault.jpg" width="50%">](https://youtu.be/HXT8ZYYlVNg)
 
 # Credit
