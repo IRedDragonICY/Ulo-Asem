@@ -58,8 +58,7 @@ Tampilan aplikasi saat ditutup
 </p>
 
 # Penjelasan Program
-
-https://youtu.be/HXT8ZYYlVNg
+[<img src="https://img.youtube.com/vi/HXT8ZYYlVNg/maxresdefault.jpg" width="50%">](https://youtu.be/HXT8ZYYlVNg)
 
 # Credit
 [Library Irvine32](https://github.com/Eazybright/Irvine32), KIP R. IRVINE Florida International University School of Computing and Information Sciences.
