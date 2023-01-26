@@ -63,4 +63,4 @@ Tampilan aplikasi saat ditutup
 # Credit
 [Library Irvine32](https://github.com/Eazybright/Irvine32), KIP R. IRVINE Florida International University School of Computing and Information Sciences.
 
-[Ali Tarmuji, S.T., M.Cs. Teknik Informatika](https://github.com/alitarmuji), selaku dosen Dasar Sistem Komputer .
+[Ali Tarmuji, S.T., M.Cs. Teknik Informatika](https://github.com/alitarmuji), selaku dosen pembimbing saya dalam mata kuliah Dasar Sistem Komputer .
